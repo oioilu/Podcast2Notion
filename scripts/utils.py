@@ -347,25 +347,6 @@ def str_to_timestamp(date):
     return int(dt.timestamp())
 
 
-upload_url = "https://wereadassets.malinkang.com/"
-
-
-def upload_image(folder_path, filename, file_path):
-    # 将文件内容编码为Base64
-    with open(file_path, "rb") as file:
-        content_base64 = base64.b64encode(file.read()).decode("utf-8")
-
-    # 构建请求的JSON数据
-    data = {"file": content_base64, "filename": filename, "folder": folder_path}
-
-    response = requests.post(upload_url, json=data)
-
-    if response.status_code == 200:
-        print("File uploaded successfully.")
-        return response.text
-    else:
-        return None
-
 
 def url_to_md5(url):
     # 创建一个md5哈希对象
@@ -407,7 +388,3 @@ def download_image(url, save_dir="cover"):
         print(f"Failed to download image. Status code: {response.status_code}")
     return save_path
 
-
-def upload_cover(url):
-    cover_file = download_image(url)
-    return upload_image("cover", f"{cover_file.split('/')[-1]}", cover_file)
