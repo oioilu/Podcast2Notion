@@ -2,8 +2,11 @@ name: podcast sync
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
+  # schedule（每天 08:00 CST）已于 2026-11-17 停用：
+  # 该任务以小宇宙 App 私有接口 + REFRESH_TOKEN 高频翻页，导致账号被临时封禁。
+  # 需要恢复时，取消下面两行注释并重新配置 REFRESH_TOKEN。
+  # schedule:
+  #   - cron: "0 0 * * *"
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
