@@ -1,2 +1,7 @@
 .env
+venv/
+.sync_state.json
+.sync_state.json.tmp
 scripts/__pycache__/
+tests/__pycache__/
+__pycache__/
